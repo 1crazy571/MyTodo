@@ -1,0 +1,12 @@
+{
+  "title": "ToDo",
+  "listTile1": "Today",
+  "listTile2": "Important",
+  "listTile3": "Scheculed",
+  "listTile4": "For Me",
+  "listTile5": "Flagged",
+  "listTile6": "ToDo's",
+  "detailNote": " Add Note",
+  "isInToday" : "Remove from Today's view",
+  "isNotInToday" : "Add to Today's view"
+}

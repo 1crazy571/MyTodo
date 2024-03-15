@@ -1,0 +1,12 @@
+{
+  "title": "ToDo",
+  "listTile1": "Bugün",
+  "listTile2": "Önemli",
+  "listTile3": "Planlanan",
+  "listTile4": "Bana atanmış",
+  "listTile5": "Bayrak eklenmiş e-postalar",
+  "listTile6": "Görevler",
+  "detailNote": " Not Ekle",
+  "isInToday": "Günüm görünümünden çıkar",
+  "isNotInToday": "Günüm görünümünden ekle"
+}
