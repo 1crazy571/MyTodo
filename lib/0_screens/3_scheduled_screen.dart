@@ -79,7 +79,8 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                 )
               : null,
           backgroundColor: Theme.of(context).colorScheme.background,
-          appBar: AppBar(
+          appBar: AppBar(foregroundColor: Theme.of(context).colorScheme.onBackground,
+          backgroundColor: Theme.of(context).colorScheme.background,
             actions: [
               PopupMenuButton(
                 itemBuilder: (_) => <PopupMenuItem<String>>[

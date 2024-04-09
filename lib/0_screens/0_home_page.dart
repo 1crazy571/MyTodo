@@ -69,9 +69,10 @@ class _TodoHomePageState extends State<TodoHomePage> {
             onPressed: () {
               showDialogMethod(context, provider);
             },
-            icon: const Icon(
+            icon: Icon(
               Icons.add_card,
               size: 27,
+              color: Theme.of(context).colorScheme.onBackground,
             ),
           ),
           appBar: AppBar(
@@ -84,9 +85,16 @@ class _TodoHomePageState extends State<TodoHomePage> {
                       themeValue = !themeValue;
                     });
                   },
-                  icon: const Icon(Icons.search))
+                  icon: Icon(
+                    Icons.search,
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ))
             ],
-            title: const Text('ToDo'),
+            title: Text(
+              'ToDo',
+              style:
+                  TextStyle(color: Theme.of(context).colorScheme.onBackground),
+            ),
           ),
           body: TryWidget(
             rrr: Colors.amber,
@@ -107,7 +115,9 @@ class _TodoHomePageState extends State<TodoHomePage> {
                             )).then((value) {
                           getAllScreensLengths();
                         }),
-                        trailing: Text(todayLenght),
+                        trailing: todayLenght != "0"
+                            ? Text(todayLenght)
+                            : const Text(""),
                         title: Text(AppLocalizations.of(context)!.listTile1),
                       ),
                       ListTile(
@@ -132,7 +142,9 @@ class _TodoHomePageState extends State<TodoHomePage> {
                           ],
                         ),
                         title: Text(AppLocalizations.of(context)!.listTile2),
-                        trailing: Text(importantLenght),
+                        trailing: importantLenght != "0"
+                            ? Text(importantLenght)
+                            : const Text(""),
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -147,7 +159,9 @@ class _TodoHomePageState extends State<TodoHomePage> {
                           color: Color.fromARGB(255, 95, 168, 97),
                         ),
                         title: Text(AppLocalizations.of(context)!.listTile3),
-                        trailing: Text(scheduledLenght),
+                        trailing: scheduledLenght != "0"
+                            ? Text(scheduledLenght)
+                            : const Text(""),
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -162,7 +176,9 @@ class _TodoHomePageState extends State<TodoHomePage> {
                           color: Colors.blue,
                         ),
                         title: Text(AppLocalizations.of(context)!.listTile6),
-                        trailing: Text(toDosLenght),
+                        trailing: toDosLenght != "0"
+                            ? Text(toDosLenght)
+                            : const Text(""),
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -268,9 +284,9 @@ class _TodoHomePageState extends State<TodoHomePage> {
             padding: const EdgeInsets.only(bottom: 120),
             child: Center(
               child: Container(
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(22))),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.background,
+                    borderRadius: const BorderRadius.all(Radius.circular(22))),
                 constraints:
                     const BoxConstraints(maxHeight: 450, maxWidth: 350),
                 child: Padding(
@@ -437,12 +453,24 @@ class _TodoHomePageState extends State<TodoHomePage> {
                                           provider.changeNewListBackgroundColor(
                                               0xFF000000);
                                         },
-                                        child: const Text("Cancel")),
+                                        child: Text(
+                                          "Cancel",
+                                          style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onBackground),
+                                        )),
                                     ElevatedButton(
                                         onPressed: () {
                                           submitNewList(context, provider);
                                         },
-                                        child: const Text("Confirm")),
+                                        child: Text(
+                                          "Confirm",
+                                          style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onBackground),
+                                        )),
                                   ],
                                 ),
                               ]),
@@ -525,14 +553,16 @@ class MyToggleButtonsState extends State<MyToggleButtons> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ToggleButtons(
+              
               borderColor: Colors.transparent,
-              splashColor: Colors.transparent,
+              splashColor: const Color.fromARGB(0, 238, 34, 34),
               focusColor: Colors.amber,
               highlightColor: Colors.amber,
               selectedBorderColor: Colors.transparent,
               fillColor: Colors.transparent,
               selectedColor: Color(provider.getnewListBackgroundColor),
               isSelected: isSelected,
+              
               onPressed: (index) {
                 chosenindex = index;
                 setState(() {
@@ -545,11 +575,27 @@ class MyToggleButtonsState extends State<MyToggleButtons> {
                   }
                 });
               },
-              children: const <Widget>[
-                Text(
-                  "Renk",
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(right: 5),
+                  child: OutlinedButton(
+                    style: ButtonStyle(side: MaterialStatePropertyAll(BorderSide(color:  isSelected[0] ? Colors.blue : Theme.of(context).colorScheme.onBackground),),),
+                      onPressed: null,
+                      child: Text(
+                        "Renk",
+                        style: TextStyle(
+                            color: isSelected[0] ? Colors.blue : Theme.of(context).colorScheme.onBackground),
+                      ),),
                 ),
-                Text("Fotoğraf")
+                    
+                OutlinedButton(
+                  style: ButtonStyle(side: MaterialStatePropertyAll(BorderSide(color:  isSelected[1] ? Colors.blue : Theme.of(context).colorScheme.onBackground),),),
+                    onPressed: null,
+                    child: Text(
+                      "Fotoğraf",
+                      style: TextStyle(
+                          color: isSelected[1] ?Colors.blue : Theme.of(context).colorScheme.onBackground),
+                    ),),
               ],
             ),
             Padding(
@@ -641,12 +687,23 @@ class MyToggleButtonsState extends State<MyToggleButtons> {
       return const Row(
         children: [
           CircleAvatar(),
+          SizedBox(
+            width: 3,
+          ),
           CircleAvatar(),
+          SizedBox(
+            width: 3,
+          ),CircleAvatar(),
+          SizedBox(
+            width: 3,
+          ),CircleAvatar(),
+          SizedBox(
+            width: 3,
+          ),CircleAvatar(),
+          SizedBox(
+            width: 3,
+          ),
           CircleAvatar(),
-          CircleAvatar(),
-          CircleAvatar(),
-          CircleAvatar(),
-          CircleAvatar()
         ],
       );
     }

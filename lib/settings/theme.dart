@@ -50,9 +50,9 @@ class ThemeMain extends StatelessWidget {
         error: Colors.red,
         onError: Colors.white,
         background: Color.fromRGBO(18, 18, 18, 1),
-        onBackground: Color.fromARGB(255, 41, 41, 41),
+        onBackground: Color.fromARGB(255, 255, 255, 255),
         surface: Color.fromARGB(255, 34, 34, 34),
-        onSurface: Colors.white,
+        onSurface: Colors.black,
       ),
     );
   }

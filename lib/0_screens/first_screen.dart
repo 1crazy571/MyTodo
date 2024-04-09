@@ -2,6 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todo/0_screens/0_home_page.dart';
+
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
@@ -11,12 +14,17 @@ class FirstScreen extends StatefulWidget {
 }
 
 class _FirstScreenState extends State<FirstScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          const RiveAnimation.asset("RiveAssets/background.riv"),
+            const RiveAnimation.asset("RiveAssets/background.riv",),
           Positioned.fill(
             child: BackdropFilter(
                 filter: ImageFilter.blur(
@@ -58,12 +66,25 @@ class _FirstScreenState extends State<FirstScreen> {
               style: const ButtonStyle(
                   backgroundColor:
                       MaterialStatePropertyAll(Colors.transparent)),
-              onPressed: () {},
-              child: const Text("Next Page  ➡️",style: TextStyle(color: Colors.white,fontSize: 17)),
+              onPressed: () {
+                shareMethod();
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute<void>(
+                      builder: (BuildContext context) => const TodoHomePage()),
+                );
+              },
+              child: const Text("Next Page  ➡️",
+                  style: TextStyle(color: Colors.white, fontSize: 17)),
             ),
           ),
         ],
       ),
     );
+  }
+
+  void shareMethod() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.setBool("firstScreen", false);
   }
 }

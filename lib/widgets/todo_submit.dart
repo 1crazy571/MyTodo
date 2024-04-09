@@ -137,7 +137,7 @@ class _ToDoSubmitState extends State<ToDoSubmit> {
                       borderRadius: BorderRadius.circular(22),
                       color: provider.getischip1selected
                           ? Colors.blue[100]
-                          : Colors.white,
+                          : Colors.grey[200],
                     ),
                     child: InkWell(
                       onTapDown: (details) {
@@ -159,11 +159,11 @@ class _ToDoSubmitState extends State<ToDoSubmit> {
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
                           children: [
-                            const Icon(Icons.notifications),
+                             Icon(Icons.notifications,color: Theme.of(context).colorScheme.onSurface,),
                             const SizedBox(
                               width: 5,
                             ),
-                            const Text("Bana anımsat"),
+                             Text("Bana anımsat",style: TextStyle(color: Theme.of(context).colorScheme.onSurface),),
                             if (provider.getischip1selected)
                               SizedBox(
                                 height: 22,
@@ -199,17 +199,17 @@ class _ToDoSubmitState extends State<ToDoSubmit> {
                     child: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(22),
-                          color: Colors.white60),
+                          color: Colors.grey[200]),
                       width: 140,
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
+                      child:  Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Row(
                           children: [
-                            Icon(Icons.date_range_outlined),
-                            SizedBox(
+                             Icon(Icons.date_range_outlined,color:Theme.of(context).colorScheme.onSurface ,),
+                            const SizedBox(
                               width: 5,
                             ),
-                            Text("Son tarih ekle")
+                            Text("Son tarih ekle",style: TextStyle(color: Theme.of(context).colorScheme.onSurface),),
                           ],
                         ),
                       ),

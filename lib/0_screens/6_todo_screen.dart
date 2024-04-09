@@ -11,8 +11,7 @@ import '../widgets/todo_item.dart';
 
 class ToDoScreen extends StatefulWidget {
   const ToDoScreen({super.key});
-  
-  
+
   @override
   State<ToDoScreen> createState() => _ToDoScreenState();
 }
@@ -22,7 +21,6 @@ class _ToDoScreenState extends State<ToDoScreen> {
   String today = "ToDoa";
   bool checkbox = false;
   late final FocusNode myfocusnode = FocusNode();
-
 
   @override
   void initState() {
@@ -35,7 +33,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
   @override
   Widget build(BuildContext context) {
     bool bottomAddWidget = context.watch<ToDoProvider>().getbottomAddWidget;
-Brightness brightness = MediaQuery.of(context).platformBrightness;
+    Brightness brightness = MediaQuery.of(context).platformBrightness;
     bool isDarkMode = brightness == Brightness.dark;
     return BlocBuilder<ToDoCubit, List<ToDoModel>>(
       builder: (context, toDoList) {
@@ -81,7 +79,8 @@ Brightness brightness = MediaQuery.of(context).platformBrightness;
                   ),
                 )
               : null,
-          appBar: AppBar( backgroundColor: Theme.of(context).colorScheme.background,
+          appBar: AppBar(foregroundColor: Theme.of(context).colorScheme.onBackground,
+            backgroundColor: Theme.of(context).colorScheme.background,
             actions: [
               PopupMenuButton(
                 itemBuilder: (_) => <PopupMenuItem<String>>[
@@ -112,17 +111,16 @@ Brightness brightness = MediaQuery.of(context).platformBrightness;
                   ),
                 ),
                 if (bottomAddWidget)
-                Positioned(
-                  bottom: 0,
-                  child: ToDoSubmit(
-                    whichPage: "ToDo",
-                    tableName: "ToDo",
-                    backgroundColor: 0xFFFFFFFF,
-                    focusnode: myfocusnode,
-                    primaryColor: 0xFF2196F3,
-                    
-                  ),
-                )
+                  Positioned(
+                    bottom: 0,
+                    child: ToDoSubmit(
+                      whichPage: "ToDo",
+                      tableName: "ToDo",
+                      backgroundColor: 0xFFFFFFFF,
+                      focusnode: myfocusnode,
+                      primaryColor: 0xFF2196F3,
+                    ),
+                  )
               ],
             ),
           ),
@@ -130,7 +128,8 @@ Brightness brightness = MediaQuery.of(context).platformBrightness;
       },
     );
   }
-   int throwBackItemCount(int itemlength) {
+
+  int throwBackItemCount(int itemlength) {
     if (itemlength < 1) {
       return itemlength + 12;
     } else if (itemlength < 2) {

@@ -208,7 +208,7 @@ class _ToDoDetailScreenState extends State<ToDoDetailScreen>
                                         title: toDoList[widget.index]
                                                 .schedule
                                                 .isEmpty
-                                            ? const Text("Bana anımsat")
+                                            ? const Text("Remind Me")
                                             : Text(
                                                 toDoList[widget.index].schedule,
                                                 style: TextStyle(
@@ -262,8 +262,8 @@ class _ToDoDetailScreenState extends State<ToDoDetailScreen>
                                       shape: Border(),
                                       clipBehavior: Clip.hardEdge,
                                       child: ListTile(
-                                        title: Text("Son Tarih Ekle"),
-                                        leading: Icon(Icons.notifications),
+                                        title: Text("Add last date"),
+                                        leading: Icon(Icons.date_range),
                                       ),
                                     ),
                                   ),
